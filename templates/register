@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+  <div class="eyebrow">Authentication Security</div>
+  <h1>Create Account</h1>
+  <p class="sub">Passwords are hashed before storage — never saved as plain text.</p>
+
+  <div class="card">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('register') }}">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="new-password" required minlength="8" />
+
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+
+  <p class="footer-link">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+{% endblock %}
