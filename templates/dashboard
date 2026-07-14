@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <div class="eyebrow">Authentication Security</div>
+  <h1>Welcome, {{ username }}</h1>
+  <p class="sub">You're securely logged in. This page is only reachable with a valid session.</p>
+
+  <div class="card">
+    <p style="margin:0 0 18px; font-size:14.5px; color: var(--text); line-height:1.5;">
+      This confirms the login system is working end-to-end: your password was hashed at registration,
+      verified at login, and a session was created to keep you signed in.
+    </p>
+    <a href="{{ url_for('logout') }}" class="btn-link">Log Out</a>
+  </div>
+{% endblock %}
