@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+  <div class="eyebrow">Authentication Security</div>
+  <h1>Vault</h1>
+  <p class="sub">Sign in to your account. Five wrong attempts will lock the account for {{ 60 }} seconds.</p>
+
+  <div class="card">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required />
+
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+
+  <p class="footer-link">No account yet? <a href="{{ url_for('register') }}">Register here</a></p>
+{% endblock %}
